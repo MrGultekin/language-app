@@ -26,7 +26,7 @@ export const useVocabStore = defineStore("vocabStore", {
         word: "How are you?",
         meaning: "Nasılsın?",
         isFav: true,
-        isLearned: true,
+        isLearned: false,
         level: "Intermediate",
         category: "Introductions",
       },
