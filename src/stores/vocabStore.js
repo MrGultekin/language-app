@@ -4,9 +4,18 @@ export const useVocabStore = defineStore("vocabStore", {
   state: () => ({
     vocabs: [
       {
-        id: 1,
+        id: 0,
         word: "Hello",
-        meaning: "Merhaba",
+        meaning: "Hallo",
+        isFav: true,
+        isLearned: false,
+        level: "Beginner",
+        category: "Greetings",
+      },
+      {
+        id: 1,
+        word: "Goodbye",
+        meaning: "Auf Wiedersehen",
         isFav: true,
         isLearned: false,
         level: "Beginner",
@@ -14,26 +23,17 @@ export const useVocabStore = defineStore("vocabStore", {
       },
       {
         id: 2,
-        word: "Goodbye",
-        meaning: "Güle güle",
-        isFav: true,
-        isLearned: false,
-        level: "Beginner",
-        category: "Greetings",
-      },
-      {
-        id: 3,
         word: "How are you?",
-        meaning: "Nasılsın?",
+        meaning: "Wie geht es dir?",
         isFav: true,
         isLearned: false,
         level: "Intermediate",
         category: "Introductions",
       },
       {
-        id: 4,
+        id: 3,
         word: "I am fine",
-        meaning: "İyiyim",
+        meaning: "Mir geht es gut",
         isFav: false,
         isLearned: true,
         level: "Intermediate",
@@ -41,6 +41,7 @@ export const useVocabStore = defineStore("vocabStore", {
       },
     ],
     nameOfApp: "Learn with Pineapple",
+    i: 0,
   }),
   getters: {
     getIsLearned() {

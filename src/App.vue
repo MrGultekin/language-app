@@ -15,8 +15,11 @@
       <FrontCard
         :vocab-prop="vocabStore.vocabs"
         :vocab-id="vocabStore.vocabs.map((vocab) => vocab)"
+        :all="vocabStore"
+        @next="next()"
+        @prev="prev()"
       />
-      <BackCard />
+      <BackCard :vocab-prop="vocabStore.vocabs" :all="vocabStore" />
     </div>
   </div>
 
@@ -66,9 +69,30 @@ export default {
   },
   setup() {
     const vocabStore = useVocabStore();
-    const filter = ref("all");
+    const filter = ref("");
 
-    return { vocabStore, filter };
+    // const next = () => {
+    //   console.log("next");
+    //   vocabStore.i++;
+    // };
+    const next = () => {
+      console.log("next");
+      if (vocabStore.i < vocabStore.vocabs.length - 1) {
+        vocabStore.i++;
+      } else {
+        vocabStore.i = 0;
+      }
+    };
+    const prev = () => {
+      console.log("prev");
+      if (vocabStore.i > 0) {
+        vocabStore.i--;
+      } else {
+        vocabStore.i = vocabStore.vocabs.length - 1;
+      }
+    };
+
+    return { vocabStore, filter, next, prev };
   },
 };
 </script>
