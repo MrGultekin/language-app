@@ -53,6 +53,15 @@ h2 {
     font-size: 32px;
     background-color: #fff;
 }
+h3 {
+    text-align: center;
+    /*margin: 40px 0;*/
+    border: 1px solid deepskyblue;
+    /*border-radius: 5px;*/
+    /*padding: 30px 0;*/
+    font-size: 16px;
+    background-color: yellow;
+}
 
 .button-group {
     display: flex;
@@ -68,3 +77,18 @@ h2 {
     background-color: white;
 }
 
+ /*mode container*/
+.mode-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+.mode {
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    background-color: deepskyblue;
+    margin: 0 10px;
+}

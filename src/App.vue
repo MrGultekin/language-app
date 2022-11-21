@@ -2,7 +2,8 @@
 
 <template>
   <!--  <header class="text-xl font-bold text-center">-->
-  <!--    <h1>Welcome to {{ vocabStore.nameOfApp }}</h1>-->
+  <!--  <h1>Welcome to {{ vocabStore.nameOfApp }}</h1>-->
+  <SelectMode @mode="mode" />
   <!--    <nav>-->
   <!--      <button @click="filter = 'all'">All Vocabs</button>-->
   <!--      <button @click="filter = 'isLearned'">Learned Vocabs</button>-->
@@ -10,17 +11,31 @@
   <!--&lt;!&ndash;    <img src="./components/icons/pina.svg" alt="pinaIcon" />&ndash;&gt;-->
   <!--  </header>-->
 
-  <div class="flip-card">
-    <div id="flip-element" class="flip-card-inner">
-      <FrontCard
-        :vocab-prop="vocabStore.vocabs"
-        :vocab-id="vocabStore.vocabs.map((vocab) => vocab)"
-        :all="vocabStore"
-        @next="next()"
-        @prev="prev()"
-      />
-      <BackCard :vocab-prop="vocabStore.vocabs" :all="vocabStore" />
+  <!--  Test Mode is enabled-->
+  <div class="flip-card" v-if="modeValue === 'test'">
+    <div class="flip-card">
+      <div id="flip-element" class="flip-card-inner">
+        <FrontCard
+          :vocab-prop="vocabStore.vocabs"
+          :vocab-id="vocabStore.vocabs.map((vocab) => vocab)"
+          :all="vocabStore"
+          @next="next()"
+          @prev="prev()"
+        />
+        <BackCard :vocab-prop="vocabStore.vocabs" :all="vocabStore" />
+      </div>
     </div>
+  </div>
+
+  <!--Learning Mode is enabled-->
+  <div class="learn flip-card" v-if="modeValue === 'learn'">
+    <LearnWords
+      :vocab-prop="vocabStore.vocabs"
+      :vocab-id="vocabStore.vocabs.map((vocab) => vocab)"
+      :all="vocabStore"
+      @next="next()"
+      @prev="prev()"
+    />
   </div>
 
   <!--  <div class="pl-12 text text-center" v-if="filter === 'all'">-->
@@ -59,6 +74,8 @@ import VocabMeaning from "./components/VocabMeaning.vue";
 import FrontCard from "@/components/FrontCard.vue";
 import { ref } from "vue";
 import BackCard from "@/components/BackCard.vue";
+import SelectMode from "@/components/SelectMode.vue";
+import LearnWords from "@/components/LearnWords.vue";
 
 export default {
   components: {
@@ -66,10 +83,18 @@ export default {
     VocabMeaning,
     FrontCard,
     BackCard,
+    SelectMode,
+    LearnWords,
   },
   setup() {
     const vocabStore = useVocabStore();
-    const filter = ref("");
+    const modeValue = ref("learn");
+
+    const mode = (mode) => {
+      console.log(mode);
+      modeValue.value = mode;
+      return { mode };
+    };
 
     // const next = () => {
     //   console.log("next");
@@ -92,7 +117,7 @@ export default {
       }
     };
 
-    return { vocabStore, filter, next, prev };
+    return { vocabStore, next, prev, modeValue, mode };
   },
 };
 </script>
