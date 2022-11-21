@@ -1,0 +1,40 @@
+{
+  "vocabs": [
+    {
+      "id": 0,
+      "word": "Hello",
+      "meaning": "Hallo",
+      "isFav": false,
+      "isLearned": false,
+      "level": "Beginner",
+      "category": "Greetings"
+    },
+    {
+      "id": 1,
+      "word": "Goodbye",
+      "meaning": "Auf Wiedersehen",
+      "isFav": false,
+      "isLearned": false,
+      "level": "Beginner",
+      "category": "Greetings"
+    },
+    {
+      "id": 2,
+      "word": "How are you?",
+      "meaning": "Wie geht es dir?",
+      "isFav": false,
+      "isLearned": false,
+      "level": "Intermediate",
+      "category": "Introductions"
+    },
+    {
+      "id": 3,
+      "word": "I am fine",
+      "meaning": "Mir geht es gut",
+      "isFav": false,
+      "isLearned": true,
+      "level": "Intermediate",
+      "category": "Introductions"
+    }
+  ]
+}
