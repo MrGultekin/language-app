@@ -1,5 +1,6 @@
 <template>
   <div v-if="vocabProp[all.i]" class="front-card">
+    <h3 class="total-words">{{ vocabProp.length }} words to learn today</h3>
     <!--<h2>{{ vocabProp[all.i].word }}</h2>-->
     <h2>{{ vocabProp[all.i].word }}</h2>
     <!--    <h2>{{ vocabProp[all.i].word }}</h2>-->

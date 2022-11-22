@@ -44,9 +44,9 @@
   </div>
 
   <!--  <div class="pl-12 text text-center" v-if="filter === 'all'">-->
-  <!--    <p class="text-sm font-bold">-->
-  <!--      Whole list has {{ vocabStore.getNumberOfAll }} words-->
-  <!--    </p>-->
+  <!--  <p class="text-sm font-bold">-->
+  <!--    Whole list has {{ vocabStore.getNumberOfAll }} words-->
+  <!--  </p>-->
   <!--    <div v-for="vocab in vocabStore.vocabs" :key="vocab.id">-->
   <!--      <VocabDetails :vocabProp="vocab" />-->
   <!--    </div>-->
@@ -96,7 +96,7 @@ export default {
     // fetch vocabs from store
     vocabStore.fetchVocabs();
 
-    const modeValue = ref("learn");
+    const modeValue = ref("");
 
     const mode = (mode) => {
       console.log(mode);

@@ -102,3 +102,10 @@ background-color: yellow;
     font-size: 20px;
     color: deepskyblue;
 }
+.total-words {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 16px;
+    color: deepskyblue;
+    background-color: grey;
+}
