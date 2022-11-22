@@ -5,9 +5,9 @@
   <!--  <h1>Welcome to {{ vocabStore.nameOfApp }}</h1>-->
   <SelectMode @mode="mode" />
   <!--loading-->
-  <!--  <div v-if="loading" class="loading">-->
-  <!--    <h3>Loading...</h3>-->
-  <!--  </div>-->
+  <div v-if="vocabStore.loading" class="loading">
+    <h1>Loading...</h1>
+  </div>
 
   <!--    <nav>-->
   <!--      <button @click="filter = 'all'">All Vocabs</button>-->
@@ -16,7 +16,7 @@
   <!--&lt;!&ndash;    <img src="./components/icons/pina.svg" alt="pinaIcon" />&ndash;&gt;-->
   <!--  </header>-->
 
-  <!--  Test Mode is enabled-->
+  <!--    Test Mode is enabled-->
   <div class="flip-card" v-if="modeValue === 'test'">
     <div class="flip-card">
       <div id="flip-element" class="flip-card-inner">
@@ -42,7 +42,6 @@
       @prev="prev()"
     />
   </div>
-
 
   <!--  <div class="pl-12 text text-center" v-if="filter === 'all'">-->
   <!--    <p class="text-sm font-bold">-->
@@ -75,8 +74,8 @@
 
 <script>
 import { useVocabStore } from "./stores/vocabStore";
-import VocabDetails from "./components/VocabDetails.vue";
-import VocabMeaning from "./components/VocabMeaning.vue";
+// import VocabDetails from "./components/VocabDetails.vue";
+// import VocabMeaning from "./components/VocabMeaning.vue";
 import FrontCard from "@/components/FrontCard.vue";
 import { ref } from "vue";
 import BackCard from "@/components/BackCard.vue";
@@ -85,8 +84,8 @@ import LearnWords from "@/components/LearnWords.vue";
 
 export default {
   components: {
-    VocabDetails,
-    VocabMeaning,
+    // VocabDetails,
+    // VocabMeaning,
     FrontCard,
     BackCard,
     SelectMode,
@@ -97,7 +96,7 @@ export default {
     // fetch vocabs from store
     vocabStore.fetchVocabs();
 
-    const modeValue = ref("memorized");
+    const modeValue = ref("learn");
 
     const mode = (mode) => {
       console.log(mode);

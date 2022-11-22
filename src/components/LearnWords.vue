@@ -1,11 +1,11 @@
 <template>
-  <div class="front-card">
+  <div v-if="vocabProp[all.i]" class="front-card">
+    <!--<h2>{{ vocabProp[all.i].word }}</h2>-->
     <h2>{{ vocabProp[all.i].word }}</h2>
     <!--    <h2>{{ vocabProp[all.i].word }}</h2>-->
     <!--    <h2>{{ vocabProp.map((key, vocab) => vocab[i].word) }}</h2>-->
-    <!--            <h3>{{ vocabId[index].meaning }}</h3>-->
-    <!--    <h3>{{ vocabId[all.i].meaning }}</h3>-->
-    <p>{{ vocabProp[all.i].meaning }}</p>
+    <!--                <h3>{{ vocabId[index].meaning }}</h3>-->
+    <h3>{{ vocabId[all.i].meaning }}</h3>
     <!--        <h3>{{ index }}</h3>-->
     <!--    <h3>{{ all.i }}</h3>-->
 
