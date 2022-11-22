@@ -2,47 +2,20 @@ import { defineStore } from "pinia";
 
 export const useVocabStore = defineStore("vocabStore", {
   state: () => ({
-    vocabs: [
-      {
-        id: 0,
-        word: "Hello",
-        meaning: "Hallo",
-        isFav: true,
-        isLearned: false,
-        level: "Beginner",
-        category: "Greetings",
-      },
-      {
-        id: 1,
-        word: "Goodbye",
-        meaning: "Auf Wiedersehen",
-        isFav: true,
-        isLearned: false,
-        level: "Beginner",
-        category: "Greetings",
-      },
-      {
-        id: 2,
-        word: "How are you?",
-        meaning: "Wie geht es dir?",
-        isFav: true,
-        isLearned: false,
-        level: "Intermediate",
-        category: "Introductions",
-      },
-      {
-        id: 3,
-        word: "I am fine",
-        meaning: "Mir geht es gut",
-        isFav: false,
-        isLearned: true,
-        level: "Intermediate",
-        category: "Introductions",
-      },
-    ],
+    vocabs: [],
     nameOfApp: "Learn with Pineapple",
+    loading: false,
     i: 0,
   }),
+  actions: {
+    async fetchVocabs() {
+      this.loading = true;
+      const res = await fetch("http://localhost:3000/vocabs");
+      const data = await res.json();
+      this.vocabs = data;
+      this.loading = false;
+    },
+  },
   getters: {
     getIsLearned() {
       return this.vocabs.filter((v) => v.isLearned);
@@ -57,6 +30,9 @@ export const useVocabStore = defineStore("vocabStore", {
       return this.vocabs.reduce((p, c) => {
         return c.isLearned ? p + 1 : p;
       }, 0);
+    },
+    getWordAnsMeaning() {
+      return this.vocabs[this.i].word + " - " + this.vocabs[this.i].meaning;
     },
   },
 });

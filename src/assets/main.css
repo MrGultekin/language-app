@@ -92,3 +92,7 @@ h3 {
     background-color: deepskyblue;
     margin: 0 10px;
 }
+p {
+text-align: center;
+background-color: yellow;
+}

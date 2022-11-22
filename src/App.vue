@@ -4,6 +4,11 @@
   <!--  <header class="text-xl font-bold text-center">-->
   <!--  <h1>Welcome to {{ vocabStore.nameOfApp }}</h1>-->
   <SelectMode @mode="mode" />
+  <!--loading-->
+  <!--  <div v-if="loading" class="loading">-->
+  <!--    <h3>Loading...</h3>-->
+  <!--  </div>-->
+
   <!--    <nav>-->
   <!--      <button @click="filter = 'all'">All Vocabs</button>-->
   <!--      <button @click="filter = 'isLearned'">Learned Vocabs</button>-->
@@ -37,6 +42,7 @@
       @prev="prev()"
     />
   </div>
+
 
   <!--  <div class="pl-12 text text-center" v-if="filter === 'all'">-->
   <!--    <p class="text-sm font-bold">-->
@@ -88,7 +94,10 @@ export default {
   },
   setup() {
     const vocabStore = useVocabStore();
-    const modeValue = ref("learn");
+    // fetch vocabs from store
+    vocabStore.fetchVocabs();
+
+    const modeValue = ref("memorized");
 
     const mode = (mode) => {
       console.log(mode);
@@ -117,7 +126,14 @@ export default {
       }
     };
 
-    return { vocabStore, next, prev, modeValue, mode };
+    return {
+      vocabStore,
+      next,
+      prev,
+      modeValue,
+      mode,
+      loading: vocabStore.loading,
+    };
   },
 };
 </script>
